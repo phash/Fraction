@@ -42,6 +42,8 @@ import junit.framework.Assert;
 
 import org.junit.Test;
 
+import de.mroedig.fraction.exceptions.FractionDivisionByZeroException;
+
 public class FractionTest {
 
 	@Test

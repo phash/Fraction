@@ -37,6 +37,8 @@ package de.mroedig.fraction;
  */
 import java.math.BigDecimal;
 
+import de.mroedig.fraction.exceptions.FractionDivisionByZeroException;
+
 public class Fraction {
 
 	private Integer denominator;

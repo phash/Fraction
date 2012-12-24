@@ -1,4 +1,4 @@
-package de.mroedig.fraction;
+package de.mroedig.fraction.exceptions;
 
 public class FractionDivisionByZeroException extends Exception {
 

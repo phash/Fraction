@@ -51,16 +51,16 @@ public class FractionTest {
 
 		Fraction fraction = new Fraction(links, rechts);
 
-		Assert.assertTrue(fraction.getNenner() == 2);
-		Assert.assertTrue(fraction.getZaehler() == 2);
+		Assert.assertTrue(fraction.getDenominator() == 2);
+		Assert.assertTrue(fraction.getNummerator() == 2);
 	}
 
 	@Test
 	public void testFractionIntegerInteger() {
 		Fraction fraction = new Fraction(1, 1);
 
-		Assert.assertTrue(fraction.getNenner() == 1);
-		Assert.assertTrue(fraction.getZaehler() == 1);
+		Assert.assertTrue(fraction.getDenominator() == 1);
+		Assert.assertTrue(fraction.getNummerator() == 1);
 	}
 
 	@Test
@@ -70,8 +70,8 @@ public class FractionTest {
 
 		Fraction fraction = links.divide(rechts);
 
-		Assert.assertTrue(fraction.getZaehler() == 15);
-		Assert.assertTrue(fraction.getNenner() == 8);
+		Assert.assertTrue(fraction.getNummerator() == 15);
+		Assert.assertTrue(fraction.getDenominator() == 8);
 	}
 
 	@Test
@@ -81,8 +81,8 @@ public class FractionTest {
 
 		Fraction fraction = links.multiply(rechts);
 
-		Assert.assertTrue(fraction.getZaehler() == 12);
-		Assert.assertTrue(fraction.getNenner() == 10);
+		Assert.assertTrue(fraction.getNummerator() == 12);
+		Assert.assertTrue(fraction.getDenominator() == 10);
 	}
 
 	@Test
@@ -92,8 +92,8 @@ public class FractionTest {
 
 		Fraction fraction = links.add(rechts);
 
-		Assert.assertTrue(fraction.getZaehler() == 23);
-		Assert.assertTrue(fraction.getNenner() == 10);
+		Assert.assertTrue(fraction.getNummerator() == 23);
+		Assert.assertTrue(fraction.getDenominator() == 10);
 	}
 
 	@Test
@@ -103,8 +103,8 @@ public class FractionTest {
 
 		Fraction fraction = links.substract(rechts);
 
-		Assert.assertTrue(fraction.getZaehler() == 7);
-		Assert.assertTrue(fraction.getNenner() == 10);
+		Assert.assertTrue(fraction.getNummerator() == 7);
+		Assert.assertTrue(fraction.getDenominator() == 10);
 	}
 
 	@Test

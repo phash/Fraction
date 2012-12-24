@@ -39,8 +39,8 @@ import java.math.BigDecimal;
 
 public class Fraction {
 
-	private Integer nenner;
-	private Integer zaehler;
+	private Integer denominator;
+	private Integer nummerator;
 
 	public Fraction() {
 	}
@@ -48,18 +48,18 @@ public class Fraction {
 	public Fraction(Fraction zaehler, Fraction nenner) {
 		super();
 		Fraction newFraction = divide(zaehler, nenner);
-		this.zaehler = newFraction.zaehler;
-		this.nenner = newFraction.nenner;
+		nummerator = newFraction.nummerator;
+		denominator = newFraction.denominator;
 	}
 
 	public Fraction(Integer pZaehler, Integer pNenner) {
-		zaehler = pZaehler;
-		nenner = pNenner;
+		nummerator = pZaehler;
+		denominator = pNenner;
 	}
 
 	public Fraction divide(Fraction pZaehler, Fraction pNenner) {
 		return multiply(pZaehler,
-				new Fraction(pNenner.getNenner(), pNenner.getZaehler()));
+				new Fraction(pNenner.getNummerator(), pNenner.getNummerator()));
 
 	}
 
@@ -67,8 +67,8 @@ public class Fraction {
 
 		Fraction result = new Fraction();
 
-		result.setNenner(pFirst.getNenner() * pSecond.getNenner());
-		result.setZaehler(pFirst.getZaehler() * pSecond.getZaehler());
+		result.setDenominator(pFirst.getNummerator() * pSecond.getNummerator());
+		result.setNummerator(pFirst.getNummerator() * pSecond.getNummerator());
 
 		return result;
 
@@ -77,29 +77,29 @@ public class Fraction {
 	public Fraction add(Fraction pFirst, Fraction pSecond) {
 
 		Fraction result = new Fraction();
-		result.setNenner(pFirst.getNenner() * pSecond.getNenner());
+		result.setDenominator(pFirst.getNummerator() * pSecond.getNummerator());
 
-		result.setZaehler(pFirst.getZaehler() * pSecond.getNenner()
-				+ pSecond.getZaehler() * pFirst.getNenner());
+		result.setNummerator(pFirst.getNummerator() * pSecond.getNummerator()
+				+ pSecond.getNummerator() * pFirst.getNummerator());
 
 		return result;
 
 	}
 
-	public Fraction substract(Fraction pFirst, Fraction pSecond) {
+	public Fraction substract(Fraction pLeft, Fraction pRight) {
 
 		Fraction result = new Fraction();
-		result.setNenner(pFirst.getNenner() * pSecond.getNenner());
+		result.setDenominator(pLeft.getNummerator() * pRight.getNummerator());
 
-		result.setZaehler(pFirst.getZaehler() * pSecond.getNenner()
-				- pSecond.getZaehler() * pFirst.getNenner());
+		result.setNummerator(pLeft.getNummerator() * pRight.getNummerator()
+				- pRight.getNummerator() * pLeft.getNummerator());
 
 		return result;
 
 	}
 
 	public BigDecimal getBigDecimal() {
-		return new BigDecimal(zaehler).divide(new BigDecimal(nenner));
+		return new BigDecimal(nummerator).divide(new BigDecimal(denominator));
 	}
 
 	public double getDouble() {
@@ -108,39 +108,39 @@ public class Fraction {
 
 	@Override
 	public String toString() {
-		return zaehler + "/" + nenner;
+		return nummerator + "/" + denominator;
 	}
 
-	public Integer getNenner() {
-		return nenner;
+	public Fraction divide(Fraction pRight) {
+		return divide(this, pRight);
 	}
 
-	public Integer getZaehler() {
-		return zaehler;
+	public Fraction multiply(Fraction pRight) {
+		return multiply(this, pRight);
 	}
 
-	public void setNenner(Integer nenner) {
-		this.nenner = nenner;
+	public Fraction add(Fraction pRight) {
+		return add(this, pRight);
 	}
 
-	public void setZaehler(Integer zaehler) {
-		this.zaehler = zaehler;
+	public Fraction substract(Fraction pRight) {
+		return substract(this, pRight);
 	}
 
-	public Fraction divide(Fraction rechts) {
-		return divide(this, rechts);
+	public Integer getDenominator() {
+		return denominator;
 	}
 
-	public Fraction multiply(Fraction rechts) {
-		return multiply(this, rechts);
+	public void setDenominator(Integer denominator) {
+		this.denominator = denominator;
 	}
 
-	public Fraction add(Fraction rechts) {
-		return add(this, rechts);
+	public Integer getNummerator() {
+		return nummerator;
 	}
 
-	public Fraction substract(Fraction rechts) {
-		return substract(this, rechts);
+	public void setNummerator(Integer nummerator) {
+		this.nummerator = nummerator;
 	}
 
 }

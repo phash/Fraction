@@ -55,15 +55,19 @@ public class Fraction {
 		denominator = newFraction.denominator;
 	}
 
-	public Fraction(Integer pZaehler, Integer pNenner) {
+	public Fraction(Integer pZaehler, Integer pNenner)
+			throws FractionDivisionByZeroException {
+		if (pNenner == 0) {
+			throw new FractionDivisionByZeroException();
+		}
 		nummerator = pZaehler;
 		denominator = pNenner;
 	}
 
 	public Fraction divide(Fraction pZaehler, Fraction pNenner)
 			throws FractionDivisionByZeroException {
-		return multiply(pZaehler,
-				new Fraction(pNenner.getNummerator(), pNenner.getNummerator()));
+		return multiply(pZaehler, new Fraction(pNenner.getDenominator(),
+				pNenner.getNummerator()));
 
 	}
 
@@ -72,7 +76,8 @@ public class Fraction {
 
 		Fraction result = new Fraction();
 
-		result.setDenominator(pFirst.getNummerator() * pSecond.getNummerator());
+		result.setDenominator(pFirst.getDenominator()
+				* pSecond.getDenominator());
 		result.setNummerator(pFirst.getNummerator() * pSecond.getNummerator());
 
 		return result;
@@ -83,23 +88,25 @@ public class Fraction {
 			throws FractionDivisionByZeroException {
 
 		Fraction result = new Fraction();
-		result.setDenominator(pFirst.getNummerator() * pSecond.getNummerator());
+		result.setDenominator(pFirst.getDenominator()
+				* pSecond.getDenominator());
 
-		result.setNummerator(pFirst.getNummerator() * pSecond.getNummerator()
-				+ pSecond.getNummerator() * pFirst.getNummerator());
+		result.setNummerator(pFirst.getNummerator() * pSecond.getDenominator()
+				+ pSecond.getNummerator() * pFirst.getDenominator());
 
 		return result;
 
 	}
 
-	public Fraction substract(Fraction pLeft, Fraction pRight)
+	public Fraction substract(Fraction pFirst, Fraction pSecond)
 			throws FractionDivisionByZeroException {
 
 		Fraction result = new Fraction();
-		result.setDenominator(pLeft.getNummerator() * pRight.getNummerator());
+		result.setDenominator(pFirst.getDenominator()
+				* pSecond.getDenominator());
 
-		result.setNummerator(pLeft.getNummerator() * pRight.getNummerator()
-				- pRight.getNummerator() * pLeft.getNummerator());
+		result.setNummerator(pFirst.getNummerator() * pSecond.getDenominator()
+				- pSecond.getNummerator() * pFirst.getDenominator());
 
 		return result;
 
@@ -118,43 +125,43 @@ public class Fraction {
 		return nummerator + "/" + denominator;
 	}
 
-	public Fraction divide(Fraction pRight)
-			throws FractionDivisionByZeroException {
-		return divide(this, pRight);
-	}
-
-	public Fraction multiply(Fraction pRight)
-			throws FractionDivisionByZeroException {
-		return multiply(this, pRight);
-	}
-
-	public Fraction add(Fraction pRight) throws FractionDivisionByZeroException {
-		return add(this, pRight);
-	}
-
-	public Fraction substract(Fraction pRight)
-			throws FractionDivisionByZeroException {
-		return substract(this, pRight);
-	}
-
 	public Integer getDenominator() {
 		return denominator;
-	}
-
-	public void setDenominator(Integer pDenominator)
-			throws FractionDivisionByZeroException {
-		if (pDenominator == 0) {
-			throw new FractionDivisionByZeroException();
-		}
-		denominator = pDenominator;
 	}
 
 	public Integer getNummerator() {
 		return nummerator;
 	}
 
-	public void setNummerator(Integer nummerator) {
-		this.nummerator = nummerator;
+	public void setDenominator(Integer pNenner)
+			throws FractionDivisionByZeroException {
+		if (pNenner == 0) {
+			throw new FractionDivisionByZeroException();
+		}
+		denominator = pNenner;
+	}
+
+	public void setNummerator(Integer pZaehler) {
+		nummerator = pZaehler;
+	}
+
+	public Fraction divide(Fraction rechts)
+			throws FractionDivisionByZeroException {
+		return divide(this, rechts);
+	}
+
+	public Fraction multiply(Fraction rechts)
+			throws FractionDivisionByZeroException {
+		return multiply(this, rechts);
+	}
+
+	public Fraction add(Fraction rechts) throws FractionDivisionByZeroException {
+		return add(this, rechts);
+	}
+
+	public Fraction substract(Fraction rechts)
+			throws FractionDivisionByZeroException {
+		return substract(this, rechts);
 	}
 
 }

@@ -49,10 +49,15 @@ public class FractionTest {
 		Fraction links = new Fraction(1, 1);
 		Fraction rechts = new Fraction(2, 2);
 
-		Fraction fraction = new Fraction(links, rechts);
+		Fraction fraction;
+		try {
+			fraction = new Fraction(links, rechts);
+			Assert.assertTrue(fraction.getDenominator() == 2);
+			Assert.assertTrue(fraction.getNummerator() == 2);
+		} catch (FractionDivisionByZeroException e) {
+			e.printStackTrace();
+		}
 
-		Assert.assertTrue(fraction.getDenominator() == 2);
-		Assert.assertTrue(fraction.getNummerator() == 2);
 	}
 
 	@Test
@@ -68,10 +73,16 @@ public class FractionTest {
 		Fraction links = new Fraction(3, 2);
 		Fraction rechts = new Fraction(4, 5);
 
-		Fraction fraction = links.divide(rechts);
+		Fraction fraction;
+		try {
+			fraction = links.divide(rechts);
+			Assert.assertTrue(fraction.getNummerator() == 15);
+			Assert.assertTrue(fraction.getDenominator() == 8);
+		} catch (FractionDivisionByZeroException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
-		Assert.assertTrue(fraction.getNummerator() == 15);
-		Assert.assertTrue(fraction.getDenominator() == 8);
 	}
 
 	@Test
@@ -79,10 +90,16 @@ public class FractionTest {
 		Fraction links = new Fraction(3, 2);
 		Fraction rechts = new Fraction(4, 5);
 
-		Fraction fraction = links.multiply(rechts);
+		Fraction fraction;
+		try {
+			fraction = links.multiply(rechts);
 
-		Assert.assertTrue(fraction.getNummerator() == 12);
-		Assert.assertTrue(fraction.getDenominator() == 10);
+			Assert.assertTrue(fraction.getNummerator() == 12);
+			Assert.assertTrue(fraction.getDenominator() == 10);
+		} catch (FractionDivisionByZeroException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Test
@@ -90,10 +107,16 @@ public class FractionTest {
 		Fraction links = new Fraction(3, 2);
 		Fraction rechts = new Fraction(4, 5);
 
-		Fraction fraction = links.add(rechts);
+		Fraction fraction;
+		try {
+			fraction = links.add(rechts);
 
-		Assert.assertTrue(fraction.getNummerator() == 23);
-		Assert.assertTrue(fraction.getDenominator() == 10);
+			Assert.assertTrue(fraction.getNummerator() == 23);
+			Assert.assertTrue(fraction.getDenominator() == 10);
+		} catch (FractionDivisionByZeroException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Test
@@ -101,10 +124,16 @@ public class FractionTest {
 		Fraction links = new Fraction(3, 2);
 		Fraction rechts = new Fraction(4, 5);
 
-		Fraction fraction = links.substract(rechts);
+		Fraction fraction;
+		try {
+			fraction = links.substract(rechts);
+			Assert.assertTrue(fraction.getNummerator() == 7);
+			Assert.assertTrue(fraction.getDenominator() == 10);
+		} catch (FractionDivisionByZeroException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
-		Assert.assertTrue(fraction.getNummerator() == 7);
-		Assert.assertTrue(fraction.getDenominator() == 10);
 	}
 
 	@Test
@@ -129,4 +158,10 @@ public class FractionTest {
 		Assert.assertEquals(fraction.toString(), actual);
 	}
 
+	@Test(expected = FractionDivisionByZeroException.class)
+	public void testDivideByZero() {
+		@SuppressWarnings("unused")
+		Fraction fraction = new Fraction(3, 0);
+
+	}
 }
